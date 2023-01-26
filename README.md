@@ -64,3 +64,23 @@ On average, the time complexity for access a value stored within a hash table is
 However, the worst case time complexity for lookup is actually O(n) - linear time. This has to do with <em>collisions</em>.
 
 ## Hash Table Collisions
+
+As mentioned above (and shown in the above diagram from Wikipedia), values associated with hash keys are stored in individual "buckets", which are paired with an index that corresponds to that hash key. However, these "buckets" can actually store multiple values - this occurs when two different hash keys are mapped to the same index after having run through the hashing function. This type of phenomenon is known as a "collision", and it's best to avoid it when possible, although in some cases it's impossible to avoid.
+
+### Managing Collisions
+
+Collisions are a common symptom of using hash tables, and two main techniques have been developed to ensure that keys mapped to the same index are still able to store their values in a hash table. 
+
+#### Separate Chaining
+
+Separate chaining involves storing key-values that have been mapped to the same bucket as a linked-list. (For more on linked-lists, see our linked-list lesson!) Each node in the linked list stores both the original key and the value associated with that key. Our search algorithm will iterate over the linked list until it finds the matching key - then it will return the value. This diagram from wikipedia visually illustrates this concept:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Hash_table_5_0_1_1_1_1_1_LL.svg/450px-Hash_table_5_0_1_1_1_1_1_LL.svg.png"/>
+
+#### Open Addressing
+
+Open addressing is another common solution to handling collisions. Rather than storing multiple values within the same bucket, if a key is mapped to an index that already has an existing key, the hashing function will use a probing algorithm to check other indexes within the array. Once it finds an available index, it will store the key and value in the bucket associated with that index. Note that the search algorithm follows this same sequence. This diagram from wikipedia visually illustrates this concept:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hash_table_5_0_1_1_1_1_0_SP.svg/380px-Hash_table_5_0_1_1_1_1_0_SP.svg.png"/>
+
+Collisions are the reason hash tables have an O(n) worst case time complexity - if all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in a single bucket before it can find the correct
