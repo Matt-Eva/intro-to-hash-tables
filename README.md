@@ -83,7 +83,7 @@ Open addressing is another common solution to handling collisions. Rather than s
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hash_table_5_0_1_1_1_1_0_SP.svg/380px-Hash_table_5_0_1_1_1_1_0_SP.svg.png"/>
 
-Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in that bucket before it can find the correct correct value - an O(n) operation. 
+Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in that bucket before it can find the correct value - an O(n) operation. 
 
 ### Load Factor
 
