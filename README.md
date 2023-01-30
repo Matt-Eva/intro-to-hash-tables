@@ -65,7 +65,7 @@ However, the worst case time complexity for lookup is actually O(n) - linear tim
 
 ## Hash Table Collisions
 
-As mentioned above (and shown in the above diagram from Wikipedia), values associated with hash keys are stored in individual "buckets", which are paired with an index that corresponds to that hash key. However, these "buckets" can actually store multiple values - this occurs when two different hash keys are mapped to the same index after having run through the hashing function. This type of phenomenon is known as a "collision", and it's best to avoid it when possible, although in some cases it's impossible to avoid.
+As mentioned above (and shown in the above diagram from Wikipedia), values associated with hash keys are stored in individual "buckets", which are paired with an index that corresponds to that hash key. However, these "buckets" can actually store multiple values - this occurs when two different hash keys are mapped to the same index after having run through the hashing function. This type of phenomenon is known as a "collision", and it's best to avoid it when possible. Sometimes, however, it's inevitable.
 
 ### Managing Collisions
 
