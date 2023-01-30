@@ -121,4 +121,4 @@ Due to the wide inclusion of hash tables (also known as hash maps, as previously
 
 That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using both Python and Ruby. 
 
-This custom hashing function has been adopted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
+This custom hashing function has been adapted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
