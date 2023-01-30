@@ -6,7 +6,7 @@ Hash tables (also known as hash maps) are a commonly used data structure that ap
 
 Put simply, a hash table is a type of data structure that connects keys to values. This is different than an array, which maps indexes to values, where the index corresponds to a specific address in computer memory.
 
-In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood.
+In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.)
 
 While many programming languages have built in hash tables, we're going to explore how a hash table actually works, and practice implementing our own custom hash table.
 
@@ -83,4 +83,42 @@ Open addressing is another common solution to handling collisions. Rather than s
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hash_table_5_0_1_1_1_1_0_SP.svg/380px-Hash_table_5_0_1_1_1_1_0_SP.svg.png"/>
 
-Collisions are the reason hash tables have an O(n) worst case time complexity - if all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in a single bucket before it can find the correct
+Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in that bucket before it can find the correct correct value - an O(n) operation. 
+
+### Load Factor
+
+Part of determining a hash tables performance involves a metric call a "load factor". Basically, a load factor represents the relationship between the number of key value pairs stored within a hash table and the number of buckets available within that hash table.
+
+`load factor = n / k`
+
+where `n` represents the number of key value pairs in the hash table and `k` represents the number of buckets available in the hash table.
+
+As the value of the load factor approaches 1 - at which point the hash table would have the same number of values stored as entries available - the performance of the hash table worsens. Why? Well, because collisions start to become more likely. The fewer available entries, the more likely it is that your hashing function will map two different keys to the same index.
+
+Many hash table implementations have a <em>rehashing</em> feature built into them, where a hash table will increase the number of buckets it has when the load factor approaches 1. Note that rehashing itself is a non-trivial operation, as the computer has to reallocate memory for the newly sized hash table.
+
+## Performance Implications
+
+Hash tables are an extremely handy data structure to use when working with data and building algorithms to routinely interact with data, in part because of the way the information is organized, and in part due to their quick lookup operations. Oftentimes, accessing a key within built in language hash tables - dictionaries in Python - will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program.
+
+It's important to note that not all hash tables use an array as the underlying data structure of a hash map - some use Binary Search Trees. This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). One version offers a chance at improved performance, but an overall worst case time complexity, the other offers a more consistent performance with a lower peak performance.
+
+## Using Hash Tables
+
+As mentioned before, most languages have built in hash tables:
+
+- JavaScript - all `objects` in JavaScript are implemented as hash tables.
+- Ruby - ruby `hashes` are ruby's implementation of a hash table
+- Python - python `dictionaries` are python's implementation of a hash table
+- Java - Java has `HashSets`s, `HashMap`s, `LinkedHashSet`s, and `LinkedHashMap`s
+- Go - Go has a `map` data type, which is implemented as a hash table
+- C++ - includes the `unordered_map`
+- Rust - includes `HashMap` and `HashSet` as part of it's standard library
+
+Due to the wide inclusion of hash tables (also known as hash maps, as previously mentioned) in major programming languages, you'll often be able to leverage the functionality of a hash map without having to implement your own custom solution. Just get familiar with your language of choice's hash table, and read up on how that language uses and implements it.
+
+## Custom Hash Table Implementation
+
+That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using both Python and Ruby. 
+
+This custom hashing function has been adopted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
