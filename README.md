@@ -6,7 +6,7 @@ Hash tables (also known as hash maps) are a commonly used data structure that ap
 
 Put simply, a hash table is a type of data structure that connects keys to values. This is different than an array, which maps indexes to values, where the index corresponds to a specific address in computer memory.
 
-In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.)
+In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.) For this reason, hash tables that use arrays under the hood are considered a type of "associative array" - basically an array that uses key value pairs.
 
 While many programming languages have built in hash tables, we're going to explore how a hash table actually works, and practice implementing our own custom hash table.
 
