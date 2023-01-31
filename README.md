@@ -122,3 +122,68 @@ Due to the wide inclusion of hash tables (also known as hash maps, as previously
 That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using both Python and Ruby. 
 
 This custom hashing function has been adopted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
+
+### Setting up the Class
+
+The first thing we'll need to do is set up a new class for our HashTable that we want to build out. Within this class, we'll create all of the necessary methods and attributes need to add, find, update, and store values.
+
+We'll be implementing this hash table using an array as the underlying structure, rather than a binary search tree:
+
+python:
+```
+import math
+
+class HashTable:
+
+    def __init__(self, size):
+        self.buckets = [None] * size
+        self.size = size
+```
+
+ruby: 
+```
+class HashTable:
+
+    attr_accessor :buckets, :size
+
+    def initialize(size)
+        @buckets = Array.new(size)
+        @size = size
+    end
+```
+
+Note that our initialize methods both take in a `size` argument - this allows us to set the initialize size of the array used to implement our hash table. If we're expecting to add a certain number of values to our hash table, setting an initial size will allow us to allocate an appropriate number of resources at the beginning of our program, which can prevent the need for rehashing.
+
+Note that we're also importing the `math` library in our python code - we'll be using some functions from this library in our hash function.
+
+### Creating the Hash Function
+
+Now we need to actually create a hash method on our class that will allow us to take in keys and convert them into unique numerical identifiers that we can map to indexes in our array. Note that the hash function we're using is not perfect - we're likely going to get some collisions.
+
+For simplicity, let's assume that we're only going to be using strings as keys in our hash table.
+
+python:
+```
+def hash_key(self, key):
+    hashed_key = 0
+    key_len = len(key)
+    i = 0
+    while i < key_len:
+        hashed_key += (ord(key[i]) + i)**2
+        i+=1
+    return hashed_key
+```
+
+ruby:
+```
+def hash_key(key)
+    hashed_key = 0
+    key_len = key.length
+    i = 0
+    while i < key_len do
+        hashed_key += (key[i].ord + i)**2
+        i+=1
+    end
+    hashed_key
+end
+```
