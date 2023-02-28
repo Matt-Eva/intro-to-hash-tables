@@ -99,9 +99,11 @@ Many hash table implementations have a <em>rehashing</em> feature built into the
 
 ## Performance Implications
 
-Hash tables are an extremely handy data structure to use when working with data and building algorithms to routinely interact with data, in part because of the way the information is organized, and in part due to their quick lookup operations. Oftentimes, accessing a key within built in language hash tables - dictionaries in Python - will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program.
+Hash tables are an extremely handy data structure to use when working with data and building algorithms to routinely interact with data, in part because of the way the information is organized, and in part due to their quick lookup operations. 
 
-It's important to note that not all hash tables use an array as the underlying data structure of a hash map - some use Binary Search Trees. This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). One version offers a chance at improved performance, but an overall worst case time complexity, the other offers a more consistent performance with a lower peak performance.
+Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. Higher level languages - Python, Ruby, JavaScript - don't give you much control over this, although it's still something to take into consideration, while lower level lanugages - Rust, Go, C++ - do.
+
+It's important to note that not all hash tables use an array as the underlying data structure of a hash map - some use Binary Search Trees. This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). One version - array as underlying structure - offers a chance at improved performance, but an overall worst case time complexity. The other - Binary Search Tree as underlying structure - offers a more consistent performance with a lower peak performance.
 
 ## Using Hash Tables
 
@@ -122,3 +124,20 @@ Due to the wide inclusion of hash tables (also known as hash maps, as previously
 That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using both Python and Ruby. 
 
 This custom hashing function has been adapted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
+
+Note that the hashing function that languages use will likely be more sophisticated that the one present here. Hashing data is part of a field of science called <a href="https://en.wikipedia.org/wiki/Cryptography"><em>cryptography</em></a>, which is the science of encoding information to make it secure. 
+
+Cryptography is a fascinating field, and you should definitely research more of it if you're interested, but it falls outside of the scope of this lesson.
+
+### Setting up our Classes
+
+We're going to be building our custom Hash Tables in both Python and Ruby. The hash table we'll be building will have an array as it's underlying data structure, and will use separate chaining to handle collisions. To set this up, we're going to need 3 classes:
+
+Python:
+```
+class Node:
+
+class LinkedList:
+
+class HashTable:
+```
