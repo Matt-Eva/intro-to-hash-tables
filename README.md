@@ -99,9 +99,13 @@ Many hash table implementations have a <em>rehashing</em> feature built into the
 
 ## Performance Implications
 
-Hash tables are an extremely handy data structure to use when working with data and building algorithms to routinely interact with data, in part because of the way the information is organized, and in part due to their quick lookup operations. 
+Hash tables can be an extremely handy data structure to use to structure data and solve algorthmic problems, in part because of the way the information is organized, and in part due to their quick lookup operations. 
 
-Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. Higher level languages - Python, Ruby, JavaScript - don't give you much control over this, although it's still something to take into consideration, while lower level lanugages - Rust, Go, C++ - do.
+Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. 
+
+It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. 
+
+Higher level languages - Python, Ruby, JavaScript - don't give you much control over this, although it's still something to take into consideration, while lower level lanugages - Rust, Go, C++ - do.
 
 It's important to note that not all hash tables use an array as the underlying data structure of a hash map - some use Binary Search Trees. This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). One version - array as underlying structure - offers a chance at improved performance, but an overall worst case time complexity. The other - Binary Search Tree as underlying structure - offers a more consistent performance with a lower peak performance.
 
@@ -141,3 +145,44 @@ class LinkedList:
 
 class HashTable:
 ```
+
+Our `HashTable` class is what we'll use to create a new HashTable. We'll use the `LinkedList` class to set up LinkedLists with each index in the array that implements our HashTable. Finally, we'll use the `Node` class to implement our LinkedList. A singly Linked List will work fine for our purposes.
+
+### Initializing instances of our classes
+
+Now that we have our classes created, let's create initialize methods so that we can actually start creating instances using our classes:
+
+Python:
+```
+class Node:
+  
+  def __init__(self):
+      self.key = key
+      self.val = val
+      self.next_node = None
+
+class LinkedList:
+
+    def __init__(self):
+      self.head = None
+
+
+class HashTable:
+
+    def __init__(self, size):
+        self.buckets = [LinkedList()] * size
+        self.capacity = size
+```
+
+Let's break down why we wrote each initialize function in this manner:
+
+#### HashTable Init
+- When creating our hash table, we want to start it off with a certain number of `buckets` that we can use to store key value pairs. So, we set our buckets to an array of a starting size.
+- One `bucket` - which corresponds with one index in our array - will store a LinkedList, which we can use to store multiple key value pairs if we end up getting any collisions.
+
+#### LinkedList Init
+- When creating a new LinkedList, we don't initially store any nodes within it. So, we can just set the `head` to `None` for the time being.
+
+#### Node Init
+- A Node is going to be a single entry within our Linked List. In other words, our Linked List is going to be a series of Nodes connected to one another.
+- We want each Node in our Linked List to store information about a specific key and value that we've put in our Hash Table.
