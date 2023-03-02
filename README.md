@@ -234,3 +234,50 @@ Because of this, if an array increases in size, the computer may have to realloc
 This can be an expensive and inefficient operation, especially if you have a very large hash table with the potential for a lot of collisions.
 
 <strong>Linked Lists</strong>, on the other hand, <em>do not</em> have to store nodes in sequential order. The implementation of a Linked List would look more like this:
+
+<table>
+<tr>
+<th>Address</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>0</td>
+<td>1st Node of Linked List</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Some other variable</td>
+<td>15</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Yet another variable</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2nd Node of Linked List</td>
+<td>8</td>
+</tr>
+ <tr>
+<td>5</td>
+<td>1st Element of an Array that begins at this address</td>
+<td>8</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3rd Node of Linked List</td>
+<td>15</td>
+</tr>
+</table>
+
+Basically, individual nodes of a Linked List can be stored at any address in memory. They don't have to be directly adjacent to other nodes in the Linked List. 
+
+Because of this, when we add a new Node to our list, our computer only need to allocate memory for that new entry. This is much more efficient that having to reallocate memory for an entire array.
