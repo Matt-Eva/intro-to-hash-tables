@@ -156,7 +156,7 @@ Python:
 ```
 class Node:
   
-  def __init__(self):
+  def __init__(self, key, val):
       self.key = key
       self.val = val
       self.next_node = None
@@ -185,4 +185,52 @@ Let's break down why we wrote each initialize function in this manner:
 
 #### Node Init
 - A Node is going to be a single entry within our Linked List. In other words, our Linked List is going to be a series of Nodes connected to one another.
-- We want each Node in our Linked List to store information about a specific key and value that we've put in our Hash Table.
+- We want each Node in our Linked List to store information about a specific key and value that we've put in our Hash Table. So, we give it a field to store a key and a field to store a value. We also allow the `init` function to receive the new key and value as arguments.
+- Nodes in a Singlye Linked List are connected by a `next_node` field in each Node. The `next_node` field points the the next node in the Linked List (for more on this, refer to our Linked List lesson). When a new node is created, it's added to the end of the Linked List, which means that its `next_node` field will be `null`. Hence, we start that field off with a default value of `null`. Once a new Node is added to the Linked List, this field will be updated to point at the new node.
+
+### Aside: Why Linked Lists instead of Arrays
+
+You may be wondering - why would we use Linked Lists to implement Open Addressing instead of using Arrays?
+
+Well, once again, it has to do with the way a computer allocates memory. Arrays (or "lists" in Python) are data structures whose individual pieces of data <em>must</em> be stored in sequential order. If we remember our diagram of memory addresses from earlier, this implies that any element within an array must be stored in this fashion:
+
+<table>
+<tr>
+<th>Address</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>0</td>
+<td>First array element</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Second array element</td>
+<td>15</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Third array element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Final array element</td>
+<td>15</td>
+</tr>
+</table>
+
+All array elements must be stored <em>sequentially</em> in memory. 
+
+Because of this, if an array increases in size, the computer may have to reallocate for an entirely new array. (If, for instance, the memory address following the final array element already had a value associated with it).
+
+This can be an expensive and inefficient operation, especially if you have a very large hash table with the potential for a lot of collisions.
+
+<strong>Linked Lists</strong>, on the other hand, <em>do not</em> have to store nodes in sequential order. The implementation of a Linked List would look more like this:
