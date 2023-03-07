@@ -28,12 +28,12 @@ When a computer runs a program, it has to save information about that program - 
 <td>10</td>
 </tr>
 <tr>
-<td>2</td>
+<td>1</td>
 <td>z</td>
 <td>15</td>
 </tr>
 <tr>
-<td>3</td>
+<td>2</td>
 <td>w</td>
 <td>3</td>
 </tr>
