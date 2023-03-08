@@ -125,9 +125,9 @@ Due to the wide inclusion of hash tables (also known as hash maps, as previously
 
 ## Custom Hash Table Implementation
 
-That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using both Python and Ruby. 
+That being said, we're programmers, and we want to understand how things work and build things ourselves! For that reason, we're going to build out our own custom hashing function using Python. 
 
-This custom hashing function has been adapted from Adrian Mejia's custom hashing function he built out in JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
+This custom hashing function has been adapted from Adrian Mejia's custom hashing function he built using JavaScript. To read more about HashMaps and other data structures in JavaScript, please check out his <a href="https://adrianmejia.com/data-structures-time-complexity-for-beginners-arrays-hashmaps-linked-lists-stacks-queues-tutorial/#HashMaps">awesome website</a>, where he includes tutorials on a wide variety of topics.
 
 Note that the hashing functions that programming languages use will likely be more sophisticated that the one present here. Hashing data is part of a field of science called <a href="https://en.wikipedia.org/wiki/Cryptography"><em>cryptography</em></a>, which is the science of encoding information. 
 
@@ -216,9 +216,9 @@ Well, once again, it has to do with the way a computer allocates memory. Arrays 
 <td>3</td>
 </tr>
 <tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
+<td><em>More addresses</em></td>
+<td><em>More elements of our array</em></td>
+<td><em>More values associated with elements in our array</em></td>
 </tr>
 <tr>
 <td>8</td>
@@ -229,7 +229,7 @@ Well, once again, it has to do with the way a computer allocates memory. Arrays 
 
 All array elements must be stored <em>sequentially</em> in memory. 
 
-Because of this, if an array increases in size, the computer may have to reallocate for an entirely new array. (If, for instance, the memory address following the final array element already had a value associated with it).
+Because of this, if an array increases in size, the computer may have to reallocate memory for an entirely new array. (If, for instance, the memory address following the final array element already had a value associated with it).
 
 This can be an expensive and inefficient operation, especially if you have a hash table with the potential for a lot of collisions.
 
@@ -313,10 +313,83 @@ def better_hash(self, key):
 
 Let's break down what's going on here.
 
-<ol>
-  <li>First, we're creating variable `hash_val` which will ultimately reference the hashed value of our key that we want our `better_hash` method to produce. We'll start it off at `0`, since we're going to be adding values to it.</li>
-  <li>Next, we're going to be creating a variable that represents the number of characters within the key we want to hash - `key_len`. This isn't strictly necessary, but it's often helpful to break down your code into individual steps, especially when you're first drafting new code</li>
-  <li>After that, we're creating a variable, `i`, which we'll be using to run our while loop. `i` will also represent and index within our key. (Remember, strings in Python have indexes!)<li/>
+
+- First, we're creating variable `hash_val` which will ultimately reference the hashed value of our key that we want our `better_hash` method to produce. We'll start it off at `0`, since we're going to be adding values to it.
+- Next, we're going to be creating a variable that represents the number of characters within the key we want to hash - `key_len`. This isn't strictly necessary, but it's often helpful to break down your code into individual steps, especially when you're first drafting new code
+- After that, we're creating a variable, `i`, which we'll be using to run our while loop. `i` will also represent an index within our key. (Remember, strings in Python have indexes!)
+- Now, we're ready to start looping through each character in our key and generate a unique number value based on each character
+- First, we get the <a href="https://en.wikipedia.org/wiki/Unicode">unicode character value</a> of the character at a specific index in our key: `char_val = ord(key[i])`
+  - Each character will give us a unique number, which means we'll be generating unique values for every character in our key!
+  - Our goal is to sum up all of the unique character values within our key to generate our unique hash value.
+  - However, as you may have already realized, this will cause some problems - what about keys that have the exact same letters, like `teach` and `cheat`? Since they have the same letters, adding the unique character codes together will result in the same final value. We don't want that! That's a guaranteed collision!
+- To account for this issue, we incorporate the <em>index</em> into the value we add to our `hash_val`.
+  - Because `teach` and `cheat` have have characters in a different order, we can use the index of each character to generate different values for the entire word.
+  - For example, in our code we've written `hash_val += (char_val + i)**2` - this means that we're increasing the value of our `hash_val` variable by the current character value, plus the index value, squared.
+    - If we look at the value that `e` generates in `teach`, we'll get `101` (the unicode value of the character `e`), multiplied by `1` (the index of `e` in the word `teach`), squared. Which all in all results in `(101 + 1) **2 = 10404`.
+    - Now, if we look at the value that `e` generates in `cheat` we see that it will generate a <em>different value</em> because it has a <em>different index value</em> in the word cheat.
+    - `(101 + 2)**2 = 10609`.
+    
+We now have a decent solution for generating unique values based on any given key. We will still likely experience collisions on our hash table, but ensuring that each key has a unique hash value will help minimize the number of collisions our hash table generates.
+
+### Getting the Index from the Hash
+
+As you may have noticed, the hash values we'll be generating for each key will be fairly large numbers. (The value generated for `e` in `teach` was <em>over 10000!</em>)
+
+These numbers probably won't immediately correspond to a specific index within the array we've set up to implement our hash table. (Unless we have an array with tens of thousands of entries, which is unlikely).
+
+So, we're going to build another method - `get_index`, which will enable us to translate the value of our hashed key to an index value:
+
+Python:
+```
+get_index(self, key):
+  hash_val = self.better_hash(key)
+  index = hash_val % self.capacity
+  return index
+```
+
+Let's break down how this is working:
+
+- First, we're using our `better_hash` method we just built to generate a unique hash value for our key. We save that hash value in our `hash_val` variable.
+- Next, to translate that `hash_val` to a valid index in our array, we're using the modulus operator - `%` - along with the capacity of our hash table.
+  - If we remember from out `__init__` method we set up earlier, `self.capacity` is keeping track of the number of elements in our array.
+  - The modulus operator - `%` - is used to get the remainder of a division of two numbers.
+    - For example, if we were to run `10 % 5`, we would receive `0`: `10 % 5 = 0`.
+      - We receive `0` because `5` fits into `10` exactly two times. So there is no remainder of this division
+    - However, if we were to run `11 % 5`, we would recieve `1`: `11 % 5 = 1`.
+      - Essentially, `5` fits into `11` two times, but it's not a <em>perfect</em> fit. `5` times `2` is `10`. So, we have `1` <em>left over</em> when we try to divide `11` by `5`. The modulus operator calculates that <em>remainder</em> for us.
+  - The modulus operator is really helpful in this context, because it allows us to get the remainder when we divide our `hash_val` by the size of our array. 
+    - This remainder is <em>guaranteed</em> to correspond with an index in our array - the remainder generated cannot be greater than or equal to the capacity itself. (Take some time to consider why this might be.)
+    - Moreover, if the capacity of our array is somehow <strong>larger</strong> than our `hash_val`, the modulus operator will just return the `hash_val`.
+    - Ex: `20 % 100 = 20`.
+- Finally, we return the index value generated by using the modulus operator.
+
+We've now managed to take a key and translate the value of that key to an index value in our array! Success!
+
+Our `HashTable` class should now look like this:
+
+Python
+```
+class HashTable:
+
+    def __init__(self, size):
+        self.buckets = [LinkedList()] * size
+        self.capacity = len(self.buckets)
+        
+    def better_hash(self, key):
+        hash_val = 0
+        key_len = len(key)
+        i = 0
+        while i < key_len:
+            char_val = ord(key[i])
+            hash_val += (char_val + i)**2
+            i+=1
+        return hash_val
+
+    def get_index(self, key):
+        hash_val = self.better_hash(key)
+        index = hash_val % self.capacity
+        return index
+```
   
-</ol>
+
 
