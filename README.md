@@ -1,6 +1,6 @@
 # Intro to Hash Tables
 
-Hash tables (also known as hash maps) are a commonly used data structure that appear in many programming languages and solutions to algorithmic problems. If you've started learning a programming language, you've likely already used a hash table. Data structures like dictionaries in Python, hashes in Ruby, and objects, maps, and sets in JavaScript are all implemented as hash tables.
+Hash tables (also known as hash maps) are a commonly used data structure that appear in many programming languages and solutions to algorithmic problems. If you've started learning a programming language, you've likely already used a hash table. Data structures like dictionaries and sets in Python, hashes in Ruby, and objects, maps, and sets in JavaScript are all implemented as hash tables.
 
 ## But What is a Hash Table?
 
@@ -127,6 +127,8 @@ Due to the wide inclusion of hash tables (also known as hash maps, as previously
 
 It's possible that you'll receive questions in technical interviews where the solution will involve using a hash table. To get more practice, try working through these <a href="https://leetcode.com/tag/hash-table/">LeetCode problems</a>! 
 
-If you haven't created a LeetCode account yet, I'd highly recommend doing so. It's a great place to practice algorithmic problem solving and learn the value of humility, patience, and practice! 
+If you haven't created a LeetCode account yet, I'd highly recommend doing so. It's a great place to hone your algorithmic problem solving ability and learn the value of humility, patience, perserverance, and practice! 
 
-Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. Oftentimes, we learn by doing and by example. If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
+Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. Oftentimes, we learn by doing and by example. 
+
+If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
