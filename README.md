@@ -1,6 +1,8 @@
 # Intro to Hash Tables
 
-Hash tables (also known as hash maps) are a commonly used data structure that appear in many programming languages and solutions to algorithmic problems. If you've started learning a programming language, you've likely already used a hash table. Data structures like dictionaries and sets in Python, hashes in Ruby, and objects, maps, and sets in JavaScript are all implemented as hash tables.
+Hash tables (also known as hash maps) are a commonly used data structure that appear in many programming languages and are widely used throughout the programming world. They offer a useful, approachable format for structuring data and often boast quick lookup times, which make them ideal for certain types of algorithmic problems. 
+
+If you've started learning a programming language, you've likely already used a hash table. Data structures like dictionaries and sets in Python, hashes in Ruby, and objects, maps, and sets in JavaScript are all implemented as hash tables.
 
 ## But What is a Hash Table?
 
