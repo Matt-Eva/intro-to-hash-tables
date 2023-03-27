@@ -6,15 +6,33 @@ If you've started learning a programming language, you've likely already used a 
 
 ## But What is a Hash Table?
 
-Put simply, a hash table is a type of data structure that connects keys to values. This is different than an array, which maps indexes to values, where the index corresponds to a specific address in computer memory.
+Put simply, a hash table is a type of data structure that connects keys to values. 
+
+Example of a dictionary in Python:
+
+```
+my_dict = {
+  "key": "value"
+}
+```
+
+You can think of hash tables as a filing cabinet (or, well, a dictionary, as the Python developers did). Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer corresponds with our "value". When we want to access a set of files from the cabinet, we use the label to lookup the appropriate drawer that contains our files.
+
+Or, to use Python's dictionary analogy, each word in our dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
+
+This is exactly how computers operate as well! Once we've added a key-value pair to our dictionary, we can pass the key to our program, and it will find the value associated with that key.
+
+As you have likely experienced, this is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
+
+Arrays and hash tables are very similar data structures, but they have a couple of important differences, which we'll explore in this reading. As a high level overview, we can think of arrays as <em>ordered, sequential</em> data structures with <em>index-value</em> pairings, and hash tables as <em>unordered</em> data structures with <em>key-value</em> pairings.
 
 In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.) For this reason, hash tables that use arrays under the hood are considered a type of "associative array" - basically an array that uses key value pairs.
 
-While many programming languages have built in hash tables, we're going to explore how a hash table actually works, and practice implementing our own custom hash table.
+But enough introduction! Let's get into it!
 
 ## A Brief Aside on Computer Memory
 
-Before we dive into that, we're going to briefly discuss how computers store values in memory.
+Hmm, actually, we have a little more introduction to do. Before we dive into the inner workings of hash tables themselves, we need to briefly discuss how computers store values in memory.
 
 When a computer runs a program, it has to save information about that program - variables, functions, data, etc. - in memory. In order to keep track of and access these different pieces of information, a computer assigns each piece of data it's own memory <em>address</em>.
 
@@ -45,23 +63,21 @@ In this example, we have three different variables, their values, and the addres
 
 This is very similar to how arrays work. Arrays are basically sequential data sets that use a consecutive series of addresses to store a bunch of data. Each array index will reference a different address in memory - when we retrieve a specific element from an array, the computer will use the address associated with that index to retrieve the value we want.
 
-What does this have to do with hash tables? Well, it has to do with a hash table's hashing function.
+When we store a value in a hash table, we're actually storing it at specific index in an array that corresponds to a specific address in computer memory. But how do we get from a key to an index? Well, it has to do with a hash table's hashing function.
 
 ## The Hashing Function
 
-As mentioned previously, hash tables are actually implemented as arrays within computer memory - that is, the computer stores the values in a hash table as index value pairs, where each index is associated with a specific address in computer memory.
+What is a "hashing function"?
 
-Then how does the key come into the picture? Don't we use hash tables so we can use keys instead of indexes?
-
-This is where the hashing function comes in - essentially, it's a function that takes in a key as an argument and converts that key into an index. This index is then associated with a particular "bucket" in which the value is stored.
+Essentially, it's a function that takes in a key as an argument and converts that key into an index in an array. This array contains a series of "buckets" - one "bucket" for each index in our array. These "buckets" hold the values we're associating with our keys in our hash table. We call them "buckets" because they can - and often do - hold <em>multiple key value pairs</em>. In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a new term that's often used when discussing hash tables.
 
 Here's a diagram from the wikipedia article on hash tables that illustrates this concept:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg/315px-Hash_table_3_1_1_0_1_0_0_SP.svg.png"/>
 
-We create keys we want to use and pass them through the hashing function, which translates them into indexes.
+We create keys we want to use and pass them through the hashing function, which translates them into indexes. Each index corresponds with a bucket, in which we store the key-value pair were entering.
 
-On average, the time complexity for access a value stored within a hash table is O(1) - constant time. This efficiency for lookup is one reason hash tables are so widely used, and why so many programming languages have built in hash tables (not to mention it's an easy data structure to work with conceptually).
+On average, the time complexity to access a value stored within a hash table is O(1) - constant time. This efficiency for lookup is one reason hash tables are so widely used, and why so many programming languages have built in hash tables.
 
 However, the worst case time complexity for lookup is actually O(n) - linear time. This has to do with <em>collisions</em>.
 
