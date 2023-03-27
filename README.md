@@ -6,7 +6,7 @@ If you've started learning a programming language, you've likely already used a 
 
 ## But What is a Hash Table?
 
-Put simply, a hash table is a type of data structure that connects pairs keys with values. 
+Put simply, a hash table is a type of data structure that pairs keys with values. 
 
 Example of a dictionary in Python:
 
