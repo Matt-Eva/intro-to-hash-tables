@@ -105,15 +105,25 @@ Separate chaining involves storing different key-value pairs that have been mapp
 
 #### Open Addressing
 
-Open addressing is another common solution to handling collisions. Rather than storing multiple values within the same bucket, if a key is mapped to an index that already has an existing key, the hashing function will use a probing algorithm to check other indexes within the array. Once it finds an available index, it will store the key and value in the bucket associated with that index. Note that the search algorithm follows this same sequence - however many steps it took to insert the new key-value pair, that's how many steps it will take to retrieve it. This diagram from wikipedia visually illustrates this concept:
+Open addressing is another common solution to handling collisions. Rather than storing multiple values within the same bucket, if a key is mapped to an index that already has an existing key, the hashing function will use a probing algorithm to check other indexes within the array. 
+
+Once it finds an available index, it will store the key and value in the bucket associated with that index. 
+
+So each bucket will only store _one_ value.
+
+Note that the search algorithm will follow the same set of sets as the insert algorithm. If the insert algorithm mapped the key to a specific index, then had to probe 4 other indexes to find an empty bucket, then the search algorithm will follow those same set of steps. 
+
+This diagram from wikipedia visually illustrates this concept:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hash_table_5_0_1_1_1_1_0_SP.svg/380px-Hash_table_5_0_1_1_1_1_0_SP.svg.png"/>
 
 #### Collisions and Time Complexity
 
-Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to  iterate through every value stored in that bucket before it can find the correct value - an O(n) operation.
+Collisions are the reason hash tables have an O(n) worst case time complexity. 
 
-It's unlikely this will happen when using any of the built-in hash tables that come with major programming languages, due to the design and implementation of these hash tables, but the situation is more complex than "hash tables have O(1) look up time". 
+For separate chaining, if all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to  iterate through every value stored in that bucket before it can find the correct value - an O(n) operation.
+
+It's a similar phenomenon for open addressing. The more entries you have in your hash table, the fewer empty buckets there will be, and the more steps your insert and search algorithms will have to take to add and access newly stored key-value pairs. 
 
 ### Load Factor
 
