@@ -79,7 +79,7 @@ We call them "buckets" because they can - and often do - hold <em>multiple key v
 
 In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a term that's often used when discussing hash tables.
 
-Here's a diagram from the wikipedia article on hash tables that illustrates this concept:
+Here's a diagram from the Wikipedia article on hash tables that illustrates this concept:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg/315px-Hash_table_3_1_1_0_1_0_0_SP.svg.png"/>
 
