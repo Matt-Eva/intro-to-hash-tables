@@ -6,7 +6,7 @@ If you've started learning a programming language, you've likely already used a 
 
 ## But What is a Hash Table?
 
-Put simply, a hash table is a type of data structure that connects keys to values. 
+Put simply, a hash table is a type of data structure that connects pairs keys with values. 
 
 Example of a dictionary in Python:
 
@@ -16,13 +16,13 @@ my_dict = {
 }
 ```
 
-You can think of hash tables as a filing cabinet (or, well, a dictionary, as the Python developers did). Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer corresponds with our "value". When we want to access a set of files from the cabinet, we use the label to lookup the appropriate drawer that contains our files.
+You can think of hash tables as a filing cabinet (or, well, a dictionary, as the Python developers did). Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer corresponds with our "value". When we want to access a set of files from the cabinet, we use the label to look up the appropriate drawer that contains our files.
 
 Or, to use Python's dictionary analogy, each word in our dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
 
 This is exactly how computers operate as well! Once we've added a key-value pair to our dictionary, we can pass the key to our program, and it will find the value associated with that key.
 
-As you have likely experienced, this is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
+This is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
 
 Arrays and hash tables are very similar data structures, but they have a couple of important differences, which we'll explore in this reading. As a high level overview, we can think of arrays as <em>ordered, sequential</em> data structures with <em>index-value</em> pairings, and hash tables as <em>unordered</em> data structures with <em>key-value</em> pairings.
 
@@ -69,7 +69,13 @@ When we store a value in a hash table, we're actually storing it at specific ind
 
 What is a "hashing function"?
 
-Essentially, it's a function that takes in a key as an argument and converts that key into an index in an array. This array contains a series of "buckets" - one "bucket" for each index in our array. These "buckets" hold the values we're associating with our keys in our hash table. We call them "buckets" because they can - and often do - hold <em>multiple key value pairs</em>. In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a new term that's often used when discussing hash tables.
+Essentially, it's a function that takes in a key as an argument and converts that key into an index in an array. This array contains a series of "buckets" - one "bucket" for each index in our array. 
+
+These "buckets" hold contain the key-value pairs we're entering in our hash table. (So, a key is both converted into an index via our hashing function <em>and</em> stored in a bucket in our array.) 
+
+We call them "buckets" because they can - and often do - hold <em>multiple key value pairs</em>. 
+
+In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a new term that's often used when discussing hash tables.
 
 Here's a diagram from the wikipedia article on hash tables that illustrates this concept:
 
@@ -77,13 +83,13 @@ Here's a diagram from the wikipedia article on hash tables that illustrates this
 
 We create keys we want to use and pass them through the hashing function, which translates them into indexes. Each index corresponds with a bucket, in which we store the key-value pair were entering.
 
-On average, the time complexity to access a value stored within a hash table is O(1) - constant time. This efficiency for lookup is one reason hash tables are so widely used, and why so many programming languages have built in hash tables.
+On average, the time complexity to access a value stored within a hash table is O(1) - constant time - which is the same time complexity for accessing a value within an array using an index. (Because that's <em>exactly</em> what we're doing.) This efficiency for lookup is one reason hash tables are so widely used, and why so many programming languages have built in hash tables.
 
 However, the worst case time complexity for lookup is actually O(n) - linear time. This has to do with <em>collisions</em>.
 
 ## Hash Table Collisions
 
-As mentioned above (and shown in the above diagram from Wikipedia), values associated with hash keys are stored in individual "buckets", which are paired with the index that corresponds to that hash key. However, these "buckets" can actually store multiple values - this occurs when two different hash keys are mapped to the same index after having run through the hashing function. This type of phenomenon is known as a "collision", and it's best to avoid it when possible. Often, however, it's inevitable.
+As mentioned above (and shown in the above diagram from Wikipedia), values associated with keys are stored in individual "buckets", which are paired with the index that corresponds to that key. However, these "buckets" can actually store multiple values - this occurs when two different keys are mapped to the same index after having run through the hashing function. This type of phenomenon is known as a "collision", and it's best to avoid it when possible. Often, however, it's inevitable.
 
 ### Managing Collisions
 
@@ -101,7 +107,11 @@ Open addressing is another common solution to handling collisions. Rather than s
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hash_table_5_0_1_1_1_1_0_SP.svg/380px-Hash_table_5_0_1_1_1_1_0_SP.svg.png"/>
 
-Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to simply iterate through every value stored in that bucket before it can find the correct value - an O(n) operation. 
+#### Collisions and Time Complexity
+
+Collisions are the reason hash tables have an O(n) worst case time complexity. If all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to  iterate through every value stored in that bucket before it can find the correct value - an O(n) operation.
+
+It's unlikely this will happen when using any of the built-in hash tables that come with major programming languages, due to the design and implementation of these hash tables, but the situation is more complex than "hash tables have O(1) look up time". 
 
 ### Load Factor
 
@@ -109,13 +119,15 @@ Part of determining a hash table's performance involves a metric call a "load fa
 
 `load factor = n / k`
 
-where `n` represents the number of key value pairs in the hash table and `k` represents the number of buckets available in the hash table.
+In this example, `n` represents the number of key value pairs in the hash table and `k` represents the number of buckets available in the hash table.
 
-As the value of the load factor approaches 1 - at which point the hash table would have the same number of values stored as entries available - the performance of the hash table worsens. Why? Well, because collisions start to become more likely. The fewer available entries, the more likely it is that your hashing function will map two different keys to the same index.
+As the value of the load factor approaches 1 - at which point the hash table would have the same number of values stored as entries available - the performance of the hash table worsens. 
+
+Why? Well, because collisions start to become more likely. The fewer empty buckets available, the more likely it is that your hashing function will map two different keys to the same index and store multiple values in the same bucket.
 
 Many hash table implementations have a <em>rehashing</em> feature built into them, where a hash table will increase the number of buckets it has when the load factor approaches 1. Note that rehashing itself can be a resource-intensive operation, as the computer has to reallocate memory for the newly sized hash table.
 
-## Performance Implications / Conclusion
+## Conclusion
 
 Hash tables can be an extremely handy data structure to use to organize data and solve algorthmic problems, in part because of the way the information is organized, and in part due to their quick lookup operations. 
 
@@ -123,17 +135,21 @@ Oftentimes, accessing a key within a hash table will be referred to as having an
 
 It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. 
 
-Higher level languages - Python, Ruby, JavaScript - don't give you much control over this, although it's still something to take into consideration, while lower level lanugages - Rust, Go, C++ - do.
+## Other Types of Hash Tables
 
-It's important to note that not all hash tables use an array as the underlying data structure - some use Binary Search Trees. This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). One version - array as underlying structure - offers a chance at improved performance, but an overall worst case time complexity. The other - Binary Search Tree as underlying structure - offers a more consistent performance with a lower peak performance.
+It's important to note that not all hash tables use an array as the underlying data structure - some use Binary Search Trees. 
+
+This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). 
+
+One version - array as underlying structure - offers a chance at improved performance, but an overall worst case time complexity. The other - Binary Search Tree as underlying structure - offers a more consistent performance with a lower peak performance.
 
 ## Using Hash Tables
 
 As mentioned before, most languages have built in hash tables:
 
-- JavaScript - all `objects` in JavaScript are implemented as hash tables.
+- JavaScript - all `objects` in JavaScript are implemented as hash tables, as are Sets and Maps.
 - Ruby - ruby `hashes` are ruby's implementation of a hash table
-- Python - python `dictionaries` are python's implementation of a hash table
+- Python - python `dictionaries` are python's implementation of a hash table. Python Sets are also implemented as hash tables.
 - Java - Java has `HashSets`s, `HashMap`s, `LinkedHashSet`s, and `LinkedHashMap`s
 - Go - Go has a `map` data type, which is implemented as a hash table
 - C++ - includes the `unordered_map`
