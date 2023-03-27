@@ -145,7 +145,7 @@ Hash tables can be an extremely handy data structure to use to organize data and
 
 Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple, as we've discussed. 
 
-It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. 
+It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could negatively impact the overall performance of your program. 
 
 ## Other Types of Hash Tables
 
