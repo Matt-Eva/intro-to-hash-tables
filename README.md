@@ -175,7 +175,7 @@ It's possible that you'll receive questions in technical interviews where the so
 
 If you haven't created a LeetCode account yet, I'd highly recommend doing so. It's a great place to hone your algorithmic problem solving ability and learn the value of humility, patience, perserverance, and practice! 
 
-Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. Oftentimes, we learn by doing and by example. 
+Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. We learn by example, especially in programming! 
 
 If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
 
