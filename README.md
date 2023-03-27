@@ -123,7 +123,7 @@ Collisions are the reason hash tables have an O(n) worst case time complexity.
 
 For separate chaining, if all keys are mapped to the same index and all values are stored in the same bucket, then our search algorithm will have to  iterate through every value stored in that bucket before it can find the correct value - an O(n) operation.
 
-It's a similar phenomenon for open addressing. The more entries you have in your hash table, the fewer empty buckets there will be, and the more steps your insert and search algorithms will have to take to add and access newly stored key-value pairs. 
+It's a similar phenomenon for open addressing. The more entries you have in your hash table, the fewer empty buckets there will be, and the more steps your insert and search algorithms will have to take to add and access newly stored key-value pairs, eventually approaching O(n). 
 
 ### Load Factor
 
@@ -151,7 +151,7 @@ It's also important to consider whether or not your hash table will be dynamical
 
 It's important to note that not all hash tables use an array as the underlying data structure - some use Binary Search Trees. 
 
-This changes the time complexity of looking up values within a hash table, from an average of O(1) and a worst case to O(n), to an average of O(log n) and a worst case of O(log n). 
+This changes the time complexity of adding and looking up values within a hash table from an average of O(1) and a worst case to O(n) to an average of O(log n) and a worst case of O(log n). 
 
 One version - array as underlying structure - offers a chance at improved performance, but an overall worst case time complexity. The other - Binary Search Tree as underlying structure - offers a more consistent performance with a lower peak performance.
 
