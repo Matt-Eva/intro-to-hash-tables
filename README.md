@@ -97,11 +97,11 @@ As the value of the load factor approaches 1 - at which point the hash table wou
 
 Many hash table implementations have a <em>rehashing</em> feature built into them, where a hash table will increase the number of buckets it has when the load factor approaches 1. Note that rehashing itself can be a resource-intensive operation, as the computer has to reallocate memory for the newly sized hash table.
 
-## Performance Implications
+## Performance Implications / Conclusion
 
 Hash tables can be an extremely handy data structure to use to organize data and solve algorthmic problems, in part because of the way the information is organized, and in part due to their quick lookup operations. 
 
-Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple. 
+Oftentimes, accessing a key within a hash table will be referred to as having an O(1) time complexity. That's ideal for a hash table, and hash tables do routinely achieve that level of performance, but it's important to know that the under-the-hood mechanics aren't quite that simple, as we've discussed. 
 
 It's also important to consider whether or not your hash table will be dynamically resized at runtime, in which case your computer could end up having to reallocate memory for that hash table a number of times, which could drastically impact the overall performance of your program. 
 
@@ -121,7 +121,7 @@ As mentioned before, most languages have built in hash tables:
 - C++ - includes the `unordered_map`
 - Rust - includes `HashMap` and `HashSet` as part of it's standard library
 
-Due to the wide inclusion of hash tables (also known as hash maps, as previously mentioned) in major programming languages, you'll often be able to leverage the functionality of a hash map without having to implement your own custom solution. Just get familiar with your language of choice's hash table, and read up on how that language uses and implements it.
+Due to the wide inclusion of hash tables (also known as hash maps, as previously mentioned) in major programming languages, you'll often be able to leverage the functionality of a hash table without having to implement your own custom solution. Just get familiar with your language of choice's hash table, and read up on how that language uses and implements it.
 
 ## Hash Table Practice
 
@@ -132,3 +132,8 @@ If you haven't created a LeetCode account yet, I'd highly recommend doing so. It
 Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. Oftentimes, we learn by doing and by example. 
 
 If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
+
+## Further Reading
+- Curious about how a custom hash table might be implemented? (Wondering if it might come up during a technical interview?)
+  - Check out our Custom Hash Table write-up, where we walk through the implementation of our own Custom Hash Table!
+- Want to keep learning about Data Stuctures? Check out our next reading on Sets, which we can use Hash Tables to implement!
