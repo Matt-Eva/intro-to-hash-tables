@@ -69,13 +69,13 @@ When we store a value in a hash table, we're actually storing it at a specific i
 
 What is a "hashing function"?
 
-Essentially, it's a function that takes in a key as an argument and converts that key into an index in an array. This array contains a series of "buckets" - one "bucket" for each index in our array. 
+Essentially, it's a function that takes in a key as an argument and converts that key into an index in the  array that underlies the hash table. This array contains a series of "buckets" - one "bucket" for each index in our array. 
 
-These "buckets" hold contain the key-value pairs we're entering in our hash table. (So, a key is both converted into an index via our hashing function <em>and</em> stored in a bucket in our array.) 
+These "buckets" contain the key-value pairs we're entering in our hash table. (So, a key is both converted into an index via our hashing function <em>and</em> stored in a bucket in our array.) 
 
 We call them "buckets" because they can - and often do - hold <em>multiple key value pairs</em>. 
 
-In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a new term that's often used when discussing hash tables.
+In reality, this array just works the way any normal array would - it has a series of indexes and a series of values associated with each index. "Bucket" is just a term that's often used when discussing hash tables.
 
 Here's a diagram from the wikipedia article on hash tables that illustrates this concept:
 
