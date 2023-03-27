@@ -16,7 +16,7 @@ my_dict = {
 }
 ```
 
-You can think of hash tables as a filing cabinet (or, well, a dictionary, as the Python developers did). Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer corresponds with our "value". When we want to access a set of files from the cabinet, we use the label to look up the appropriate drawer that contains our files.
+You can think of hash tables as a filing cabinet (or, well, a dictionary, as the Python developers did). Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer correspond with our "value". When we want to access a set of files from the cabinet, we use the label to look up the appropriate drawer that contains our files.
 
 Or, to use Python's dictionary analogy, each word in our dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
 
