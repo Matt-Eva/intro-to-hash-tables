@@ -168,6 +168,6 @@ Don't be afraid of trying problems that are very difficult, or of looking at sol
 If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
 
 ## Further Reading
-- Curious about how a custom hash table might be implemented? (Wondering if it might come up during a technical interview?)
+- Curious about how a custom hash table might be implemented? (Wondering if it might <a href="https://leetcode.com/problems/design-hashmap/">come up during a technical interview</a>?)
   - Check out our Custom Hash Table write-up, where we walk through the implementation of our own Custom Hash Table!
 - Want to keep learning about Data Stuctures? Check out our next reading on Sets, which we can use Hash Tables to implement!
