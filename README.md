@@ -30,7 +30,7 @@ You can think of hash tables as a filing cabinet. Each cabinet has a label on it
 
 Or, to use Python's dictionary analogy, each word in a dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
 
-This is exactly how computers operate as well! Once we've added a key-value pair to our dictionary, we can use a key on our hash table to find the value associated with that key.
+This is exactly how computers operate as well! Once we've added a key-value pair to our hash table, we can use the key to look up the associated value.
 
 This is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
 
