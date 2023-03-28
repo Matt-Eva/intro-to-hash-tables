@@ -79,7 +79,7 @@ This is why accessing array elements using an array index is considered to have 
 
 When we store a value in a hash table, we're actually storing it at a specific index in an array that corresponds to a specific address in computer memory. 
 
-But how do we get from a key to an index? Don't we use hash tables because we can use key-value pairs _instead_ of index-value pairs? That's where a hash table's hashing function comes in.
+But how do we get from a key to an index? Don't we use hash tables because we want to use key-value pairs _instead_ of index-value pairs? That's where a hash table's hashing function comes in.
 
 ## The Hashing Function
 
