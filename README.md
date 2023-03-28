@@ -1,6 +1,6 @@
 # Intro to Hash Tables
 
-Hash tables (also known as hash maps) are a commonly used data structure that appear in many programming languages and are widely used throughout the programming world. They offer a useful, approachable format for structuring data and often boast quick lookup times, which make them ideal for certain types of algorithmic problems. 
+A hash table (also known as a hash map) is a commonly used data structure that is built into most major programming languages. Hash tables offer a flexible, approachable format for structuring data and often boast quick lookup times, which make them ideal for certain types of algorithmic problems. 
 
 If you've started learning a programming language, you've likely already used a hash table. Data structures like dictionaries and sets in Python, hashes in Ruby, and objects, maps, and sets in JavaScript are all implemented as hash tables.
 
@@ -8,25 +8,35 @@ If you've started learning a programming language, you've likely already used a 
 
 Put simply, a hash table is a type of data structure that pairs keys with values. 
 
+As mentioned, Python dictionaries are hash tables.
+
 Example of a dictionary in Python:
 
 ```
 my_dict = {
-  "key": "value"
+  "my_key": "my_value"
 }
+```
+
+Here, we've paired a key, "my_key", with a specific value, "my_value". Whenever we want to access a value within our hash table, we use it's corresponding key:
+
+Python example:
+```
+my_dict.get("my_key")
+=> outputs "my_value"
 ```
 
 You can think of hash tables as a filing cabinet. Each cabinet has a label on it, which corresponds to our "key". The files inside the drawer correspond with our "value". When we want to access a set of files from the cabinet, we use the label to look up the appropriate drawer that contains our files.
 
-Or, to use Python's dictionary analogy, each word in our dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
+Or, to use Python's dictionary analogy, each word in a dictionary correlates with a "key" in our hash table. The definition associated with each word correlates with the "value" in our hash table. When we want to look up a certain definition, we locate the word we're looking up in our dictionary, then read the definition.
 
-This is exactly how computers operate as well! Once we've added a key-value pair to our dictionary, we can pass the key to our program, and it will find the value associated with that key.
+This is exactly how computers operate as well! Once we've added a key-value pair to our dictionary, we can use a key on our hash table to find the value associated with that key.
 
 This is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
 
 Arrays and hash tables are very similar data structures, but they have a couple of important differences, which we'll explore in this reading. As a high level overview, we can think of arrays as <em>ordered, sequential</em> data structures with <em>index-value</em> pairings, and hash tables as <em>unordered</em> data structures with <em>key-value</em> pairings.
 
-In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.) For this reason, hash tables that use arrays under the hood are considered a type of "associative array" - basically an array that uses key value pairs.
+In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.) For this reason, hash tables that use arrays under the hood are considered a type of "associative array" - basically an array that uses key-value pairs.
 
 But enough introduction! Let's get into it!
 
@@ -62,6 +72,8 @@ When a computer runs a program, it has to save information about that program - 
 In this example, we have three different variables, their values, and the addresses at which those values are stored. When we want to access those values, the computer will reference these memory addresses in order to retrieve the value.
 
 This is very similar to how arrays work. Arrays are basically sequential data sets that use a consecutive series of addresses to store a bunch of data. Each array index will reference a different address in memory - when we retrieve a specific element from an array, the computer will use the address associated with that index to retrieve the value we want.
+
+This is why accessing array elements using an array index is considered to have an O(1) time complexity. Because each index corresponds to an address in computer memory, when we tell our program to find the value at a specific index in an array, we're pointing it directly to an address in memory. The computer only has to take one step to complete this operation. Neat!
 
 When we store a value in a hash table, we're actually storing it at a specific index in an array that corresponds to a specific address in computer memory. 
 
