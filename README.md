@@ -34,7 +34,9 @@ This is exactly how computers operate as well! Once we've added a key-value pair
 
 This is a very easy and convenient way to structure data. It gives us, as programmers, a more flexible way of organizing information than arrays, which use index-value pairings.
 
-Arrays and hash tables are very similar data structures, but they have a couple of important differences, which we'll explore in this reading. As a high level overview, we can think of arrays as <em>ordered, sequential</em> data structures with <em>index-value</em> pairings, and hash tables as <em>unordered</em> data structures with <em>key-value</em> pairings.
+Arrays and hash tables are very similar data structures, but they have a couple of important differences, which we'll explore in this reading. 
+
+As a high level overview, we can think of arrays as <em>ordered, sequential</em> data structures with <em>index-value</em> pairings, and hash tables as <em>unordered</em> data structures with <em>key-value</em> pairings.
 
 In reality, hash tables actually <em>are</em> arrays - or, rather, they use arrays under the hood. (Although some use binary search trees - more on that later.) For this reason, hash tables that use arrays under the hood are considered a type of "associative array" - basically an array that uses key-value pairs.
 
