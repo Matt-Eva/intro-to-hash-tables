@@ -34,7 +34,7 @@ But enough introduction! Let's get into it!
 
 Hmm, actually, we have a little more introduction to do. Before we dive into the inner workings of hash tables themselves, we need to briefly discuss how computers store values in memory.
 
-When a computer runs a program, it has to save information about that program - variables, functions, data, etc. - in memory. In order to keep track of and access these different pieces of information, a computer assigns each piece of data it's own memory <em>address</em>.
+When a computer runs a program, it has to save information about that program - variables, functions, data, etc. - in memory. In order to keep track of and access these different pieces of information, a computer assigns each piece of data its own memory <em>address</em>.
 
 <table>
 <tr>
