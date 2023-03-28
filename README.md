@@ -71,7 +71,7 @@ When a computer runs a program, it has to save information about that program - 
 </tr>
 </table>
 
-In this example, we have three different variables, their values, and the addresses at which those values are stored. When we want to access those values, the computer will reference these memory addresses in order to retrieve the value.
+In this example, we have three different variables, their values, and the addresses at which those values are stored. When we want to access a value, the computer will reference the specific memory address at which that value is stored.
 
 This is very similar to how arrays work. Arrays are basically sequential data sets that use a consecutive series of addresses to store a bunch of data. Each array index will reference a different address in memory - when we retrieve a specific element from an array, the computer will use the address associated with that index to retrieve the value we want.
 
@@ -79,7 +79,7 @@ This is why accessing array elements using an array index is considered to have 
 
 When we store a value in a hash table, we're actually storing it at a specific index in an array that corresponds to a specific address in computer memory. 
 
-But how do we get from a key to an index? Well, it has to do with a hash table's hashing function.
+But how do we get from a key to an index? Don't we use hash tables because we can use key-value pairs _instead_ of index-value pairs? That's where a hash table's hashing function comes in.
 
 ## The Hashing Function
 
