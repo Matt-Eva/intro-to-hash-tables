@@ -178,8 +178,3 @@ If you haven't created a LeetCode account yet, I'd highly recommend doing so. It
 Don't be afraid of trying problems that are very difficult, or of looking at solutions if you've been grinding away forever to no avail. These solutions will teach you to think about programming in a new way! It doesn't mean that you've "failed" if you study someone else's code to figure out what they're doing and how they're doing it. We learn by example, especially in programming! 
 
 If you do look up somebody else's solution, try implementing it yourself! That will give you a much better grasp of how the code is working, and improve your ability to apply the concepts you've learned in the future.
-
-## Further Reading
-- Curious about how a custom hash table might be implemented? (Wondering if it might <a href="https://leetcode.com/problems/design-hashmap/">come up during a technical interview</a>?)
-  - Check out our Custom Hash Table write-up, where we walk through the implementation of our own Custom Hash Table!
-- Want to keep learning about Data Stuctures? Check out our next reading on Sets, which we can use Hash Tables to implement!
