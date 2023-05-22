@@ -99,7 +99,7 @@ Collisions are a common symptom of using hash tables, and two main techniques ha
 
 #### Separate Chaining
 
-Separate chaining involves storing different key-value pairs that have been mapped to the same bucket as individual nodes in a linked list. (For more on linked lists, see our linked-list lesson!) Each node in the linked list stores both the original key and the value associated with that key. Our search algorithm will iterate over the linked list until it finds the matching key - then it will return the value. This diagram from wikipedia visually illustrates this concept:
+Separate chaining involves storing different key-value pairs that have been mapped to the same bucket as individual nodes in a linked list. Each node in the linked list stores both the original key and the value associated with that key. Our search algorithm will iterate over the linked list until it finds the matching key - then it will return the value. This diagram from wikipedia visually illustrates this concept:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Hash_table_5_0_1_1_1_1_1_LL.svg/450px-Hash_table_5_0_1_1_1_1_1_LL.svg.png"/>
 
